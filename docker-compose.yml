@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  nginx:
+    image: project/nginx
+    build:
+      context: ./
+      dockerfile: nginx/Dockerfile
+    networks:
+      - server
+    ports:
+      - "8888:80"
+
+  php-fpm:
+    image: project/php-fpm
+    build:
+      context: symfony/
+      dockerfile: docker/Dockerfile
+      target: development
+    networks:
+      - server
+
+networks:
+  server:

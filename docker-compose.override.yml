@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  nginx:
+    volumes:
+      - "./symfony/public:/var/www/html/public:ro"
+
+  php-fpm:
+    volumes:
+      - "./symfony:/var/www/html:rw"
+      - "/var/www/html/var"
