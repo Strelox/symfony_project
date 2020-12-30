@@ -1,0 +1,10 @@
+#!/usr/bin/sh
+
+docker-compose run \
+    --rm \
+    --user $(id -u):$(id -g) \
+    --volume /etc/passwd:/etc/passwd:ro \
+    --volume /etc/group:/etc/group:ro \
+    -- \
+    php-fpm \
+    composer $@
